@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package systemwallet;
+
+service SystemWalletService {
+    rpc AddBalance(AddBalanceRequest) returns (AddBalanceResponse);
+    rpc GetBalance(GetBalanceRequest) returns (GetBalanceResponse);
+    rpc TransferBetweenWallets(TransferRequest) returns (TransferResponse);
+}
+
+message AddBalanceRequest {
+    string chain = 1;
+    string wallet_type = 2;
+    string amount = 3;
+}
+
+message AddBalanceResponse {
+    bool success = 1;
+    string message = 2;
+    string new_balance = 3; // new amount of wallet
+}
+
+message GetBalanceRequest {
+    string chain = 1;
+    string wallet_type = 2;
+}
+
+message GetBalanceResponse {
+    string balance = 1;
+}
+
+message TransferRequest {
+    string chain = 1;
+    string from_wallet_type = 2;
+    string to_wallet_type = 3;
+    string amount = 4;
+}
+
+message TransferResponse {
+    bool success = 1;
+    string message = 2;
+}
