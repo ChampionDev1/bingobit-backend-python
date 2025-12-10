@@ -1,0 +1,21 @@
+# Core dependencies
+grpcio==1.60.0
+grpcio-tools==1.60.0
+
+# Solana blockchain
+solana==0.30.2
+solders==0.18.1
+base58==2.1.1
+
+# Redis (for deposit addresses)
+redis==5.0.1
+
+# Message queue (optional - for event broadcasting to Go API Gateway)
+# kafka-python==2.0.2  # Not compatible with Python 3.12+
+# Use kafka-python-ng for Python 3.12+: pip install kafka-python-ng
+# Or skip Kafka for testing: events will be logged only
+
+# Utilities
+python-dotenv==1.0.0
+
+# Note: PostgreSQL (psycopg2) removed - Go API Gateway manages database

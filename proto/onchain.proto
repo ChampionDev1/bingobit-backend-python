@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package onchain;
+
+// OnChain Service handles blockchain transaction operations
+// Note: Deposit is automatic (monitored), not an RPC call
+service onChainSerivce {
+    rpc Withdraw(WithdrawRequest) returns (WithdrawResponse);
+    rpc Sell(SellRequest) returns (SellResponse);
+    rpc Buy(BuyRequest) returns (BuyResponse);
+}
+
+// Withdraw: User requests to withdraw funds from hot wallet to external address
+message WithdrawRequest {
+    string chain = 1;           // solana, ethereum, bsc
+    string user_id = 2;          // User identifier
+    string to_address = 3;       // Destination address
+    string amount = 4;           // Amount to withdraw
+}
+
+message WithdrawResponse {
+    bool success = 1;
+    string message = 2;
+    string tx_hash = 3;          // Transaction hash if successful
+}
+
+// Sell: User sells crypto for fiat/stablecoin
+message SellRequest {
+    string chain = 1;
+    string user_id = 2;
+    string token = 3;            // Token to sell
+    string amount = 4;
+}
+
+message SellResponse {
+    bool success = 1;
+    string message = 2;
+    string tx_hash = 3;
+}
+
+// Buy: User buys crypto with fiat/stablecoin
+message BuyRequest {
+    string chain = 1;
+    string user_id = 2;
+    string token = 3;            // Token to buy
+    string amount = 4;
+}
+
+message BuyResponse {
+    bool success = 1;
+    string message = 2;
+    string tx_hash = 3;
+}

@@ -205,3 +205,22 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Project specific
+# Generated proto files
+proto/*_pb2.py
+proto/*_pb2_grpc.py
+proto/*_pb2.pyi
+
+# Environment files
+.env.local
+.env.*.local
+
+# Docker
+docker-compose.override.yml
+
+# Database
+*.db
+
+# Logs
+logs/
